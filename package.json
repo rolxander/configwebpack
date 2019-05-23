@@ -22,5 +22,8 @@
     "build:serve": "webpack-dev-server --open"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "3.4.1"
+  }
 }
