@@ -1,3 +1,4 @@
+import $ from "jquery";
 class UsuarioUI{
 
     constructor(){
@@ -25,7 +26,7 @@ class UsuarioUI{
                 nick : inputNick.value,
                 password: inputPassword.value
             }
-            console.log(data);
+            
         })
     }
 
