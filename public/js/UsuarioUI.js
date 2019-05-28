@@ -45,6 +45,7 @@ class UsuarioUI{
         let optionCargoDev = document.createElement("option");
         let buttonRegister = document.createElement("button");
         //modificacion de objetos
+        containerRegisterUI.setAttribute("class","container-fluid");
         buttonRegister.innerHTML = "Registrarse";
         optionCargoDev.innerHTML = "Desarrollador";
         optionCargoDev.setAttribute("value","Desarrolador");
@@ -88,6 +89,7 @@ class UsuarioUI{
             console.log(data);
 
         });
+        
         
     }
 
