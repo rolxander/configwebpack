@@ -21,12 +21,22 @@ class UsuarioUI{
         containerLoginUI.append(inputNick);
         containerLoginUI.append(inputPassword);
         containerLoginUI.append(btnEnviar);
+        //evento login
         btnEnviar.addEventListener("click",()=>{
             let data = {
                 nick : inputNick.value,
                 password: inputPassword.value
             }
-            
+            $.ajax({
+                url:'../servidor/Controllers/ControllerUser.php',
+                method:"POST",
+                data:{login:data},
+                beforeSend:function(){
+                },
+                success:function(data){
+                    console.log(data);
+                }
+            });
         })
     }
 
@@ -86,7 +96,17 @@ class UsuarioUI{
                 telephone : inputTelephone.value,
                 cargo : selectedCargo.value
             }
-            console.log(data);
+            $.ajax({
+                url:'../servidor/Controllers/ControllerUser.php',
+                method:"POST",
+                data:{user:data},
+                beforeSend:function(){
+                },
+                success:function(data){
+                    console.log(data);
+                }
+            });
+            
 
         });
         
