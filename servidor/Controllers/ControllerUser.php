@@ -19,7 +19,9 @@ class UserController{
             $this->login($usuario);
 
         }else if(isset($_POST["user"])){
-            echo "estas intentado registrar";
+            $usuario = new stdClass();
+            $usuario->name;
+            $usuario->lastname;
         }
     }
 }
