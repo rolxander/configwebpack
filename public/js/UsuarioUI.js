@@ -53,7 +53,12 @@ class UsuarioUI{
         let inputDireccion = document.createElement("input");
         let selectedCargo = document.createElement("select");
         let optionCargoDev = document.createElement("option");
+        let nick = document.createElement("input");
+        let password = document.createElement("input");
+        let configPassword = document.createElement("input");
+        let nci = document.createElement("input");
         let buttonRegister = document.createElement("button");
+        
         //modificacion de objetos
         containerRegisterUI.setAttribute("class","container-fluid");
         buttonRegister.innerHTML = "Registrarse";
@@ -68,9 +73,13 @@ class UsuarioUI{
         inputLastName.setAttribute("type","text");
         inputTelephone.setAttribute("type","number");
         inputName.setAttribute("type","text");
-        inputName.placeholder="Introduce tu nombre";
-        inputLastName.placeholder = "Introduce tu apellido";
-        inputTelephone.placeholder ="Introduce tu telefono";
+        inputName.placeholder="Nombres";
+        inputLastName.placeholder = "Apellidos";
+        inputTelephone.placeholder ="Telefono";
+        nick.placeholder = "introduce tu nombre usuario";
+        password.placeholder = "Contraseña";
+        configPassword.placeholder = "Confirma contraseña";
+        nci.placeholder = "Carnet Identidad"
         
         
         //añadir nodos
@@ -79,14 +88,27 @@ class UsuarioUI{
         selectSexo.append(optionFemenino);        
         containerRegisterUI.append(inputName);
         containerRegisterUI.append(inputLastName);
+        containerRegisterUI.append(nci);
         containerRegisterUI.append(inputTelephone);
         containerRegisterUI.append(inputDireccion);
         containerRegisterUI.append(selectSexo);
         selectedCargo.append(optionCargoDev);
         containerRegisterUI.append(selectedCargo);
+        containerRegisterUI.append(nick);
+        containerRegisterUI.append(password);
+        containerRegisterUI.append(configPassword);
         containerRegisterUI.append(buttonRegister);
         
         //eventos
+        configPassword.addEventListener("change",()=>{
+            alert("");
+            if(password.value  == configPassword.value){
+                console.log("son iguales");
+            
+            }else{
+                console.log("no son iguales");
+            }
+        })
         buttonRegister.addEventListener("click",()=>{
            let  data = {
                 name : inputName.value,
@@ -94,7 +116,10 @@ class UsuarioUI{
                 direccion : inputDireccion.value,
                 sexo : selectSexo.value,
                 telephone : inputTelephone.value,
-                cargo : selectedCargo.value
+                cargo : selectedCargo.value,
+                nick : nick.value,
+                password :password.value,
+                nci :nci.value
             }
             $.ajax({
                 url:'../servidor/Controllers/ControllerUser.php',
@@ -103,10 +128,10 @@ class UsuarioUI{
                 beforeSend:function(){
                 },
                 success:function(data){
+                    //data = JSON.parse(data);
                     console.log(data);
                 }
             });
-            
 
         });
         

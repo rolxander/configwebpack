@@ -1,9 +1,24 @@
 <?php
     require('Model.php');
     class ModelUser extends Model{
+        public function gen_chars_no_dup($long=25){  
+                $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";  
+                mt_srand((double)microtime()*1000000);   
+                $i=0;  
+                $pass="";
+                while ($i != $long) {  
+                    $rand=mt_rand() % strlen($chars);  
+                    $tmp=$chars[$rand];  
+                    $pass=$pass . $tmp;  
+                    $chars=str_replace($tmp, "", $chars);  
+                    $i++;  
+                }  
+                return strrev($pass);  
+        }
         
-        public function createUser(){
-            
+        public function createUser($usuario){
+            $usuario->codigou = $this->gen_chars_no_dup(10);
+            //echo json_encode($usuario);
         }
         public function updateUser(){
 
